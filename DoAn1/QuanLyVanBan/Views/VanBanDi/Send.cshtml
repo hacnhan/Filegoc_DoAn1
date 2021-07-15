@@ -1,0 +1,142 @@
+﻿@model Models.EF.VanBanDi
+@{
+    ViewBag.Title = "Gửi văn bản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-9">
+
+    <div class="row">
+        <div class="col-md-5">
+            <ul class="list-inline shop-top-menu pb-3 pt-1">
+                <li class="list-inline-item">
+                    <a class="h3 text-dark text-decoration-none mr-3" href="#">Gửi văn bản</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Lưu ý</strong>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-primary" role="alert">
+                Chỉ được gửi văn bản tới cấp dưới của mình
+            </div>
+        </div>
+    </div>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <div><label><strong>Chọn đơn vị nhận</strong></label></div>
+                <div>
+                    @Html.DropDownList("IDPhongBan", null, "Chọn tên đơn vị", htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-md-6 text-center">
+                <div><label><strong>Chọn người nhận</strong></label></div>
+                <div>
+                    @Html.DropDownList("IDNhanVien", null, "Chọn tên nhân viên", htmlAttributes: new { @class = "form-control" })
+
+                </div>
+            </div>
+        </div>
+        <br />
+
+        @*
+            Viết js form advanced nhận data từ dropdown
+        *@
+
+        <div class="form-group">
+            <div><label>Tiêu đề <font color="red">*</font></label></div>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px">
+            <div class="col-md-4">
+                <div><label>Số hiệu văn bản <font color="red">*</font></label></div>
+                @Html.EditorFor(model => model.KyHieuVanBanDi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KyHieuVanBanDi, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-4">
+                <div><label>Loại văn bản <font color="red">*</font></label></div>
+                @Html.DropDownList("IDLVB", null, "Chọn loại văn bản", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDLVB, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-4">
+                <div><label>Độ khẩn <font color="red">*</font></label></div>
+                @Html.DropDownList("IDDoKhan", null, "Chọn mức độ", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDDoKhan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px">
+            <div class="col-md-4">
+                <div><label>Ngày ban hành <font color="red">*</font></label></div>
+                @Html.EditorFor(model => model.NgayBanHanh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayBanHanh, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-4">
+                <div><label>Ngày có hiệu lực <font color="red">*</font></label></div>
+                @Html.EditorFor(model => model.NgayHieuLuc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayHieuLuc, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-4">
+                <div><label>Hạn xử lý</label></div>
+                @Html.EditorFor(model => model.HanXuLy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HanXuLy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px">
+            <div class="col-md-12">
+                <div><label>Nội dung chính</label></div>
+                @Html.TextAreaFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control", @style = "width: 500px" } })
+                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="row form-group" style="margin-top:15px">
+            <div class="col col-md-3"><label for="file-input" class=" form-control-label">File đính kèm</label></div>
+            <div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file"></div>
+
+        </div>*@
+
+        <div class="row" style="margin-top:5px">
+            <div class="col-md-6">
+                <div><label>File</label></div>
+                @Html.DropDownList("IDFileDinhKem", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px">
+            <div class="col-md-6">
+                <div><label>Người ký tên <font color="red">*</font></label></div>
+                @Html.EditorFor(model => model.NguoiKyTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NguoiKyTen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group text-center" style="margin-top:15px">
+            <input type="submit" value="Gửi văn bản" class="btn btn-success" />
+        </div>
+
+    }
+
+</div>
+
+

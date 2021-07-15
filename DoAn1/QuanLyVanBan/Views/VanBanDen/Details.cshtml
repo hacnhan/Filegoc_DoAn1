@@ -1,0 +1,141 @@
+﻿@model Models.EF.VanBanDen
+@{
+    ViewBag.Title = "Chi tiết văn bản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-9">
+
+
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Chi tiết</strong> văn bản
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="pr-1  form-control-label">Tiêu đề</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.TieuDe)" readonly />
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="px-1  form-control-label">Số hiệu</label>
+                        <input type="text" class="form-control" placeholder=" @Html.DisplayFor(model => model.KyHieuVanBanDen)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="pr-1  form-control-label">Loại</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.LoaiVanBan.TenLVB)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="pr-1  form-control-label">Mức độ khẩn</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.MucDoKhan.TenMucDoKhan)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="px-1  form-control-label">Ngày gửi</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.NgayGui)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="pr-1  form-control-label">Ngày ban hành</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.NgayBanHanh)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="px-1  form-control-label">Ngày có hiệu lực</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.NgayCoHieuLuc)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="pr-1  form-control-label">Hạn xử lý</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.HanXuLy)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="px-1  form-control-label">Nơi nhận</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.NoiNhan)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-md-5 pb-4" style="margin-left:30px">
+                <form action="#" method="post" class="form-inline">
+                    <div class="form-group">
+                        <label for="" class="pr-1  form-control-label">Người ký tên</label>
+                        <input type="text" class="form-control" placeholder="@Html.DisplayFor(model => model.NguoiKyTen)" readonly />
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        <br />
+        <div class="card">
+            <div class="card-header">
+                <strong>Nội dung</strong> văn bản
+            </div>
+            <div class="row">
+                <iframe style="line-height:200px" src="~/File/@Model.FileDinhKem.TenFile" height="1000" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

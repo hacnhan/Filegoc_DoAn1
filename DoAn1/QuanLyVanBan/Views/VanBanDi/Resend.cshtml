@@ -1,0 +1,63 @@
+﻿@model Models.EF.VanBanDi
+@{
+    ViewBag.Title = "Chuyển tiếp văn bản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-9">
+
+    <div class="row">
+        <div class="col-md-5">
+            <ul class="list-inline shop-top-menu pb-3 pt-1">
+                <li class="list-inline-item">
+                    <a class="h3 text-dark text-decoration-none mr-3" href="#">Chuyển tiếp văn bản</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Lưu ý</strong>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-primary" role="alert">
+                Chỉ được gửi văn bản tới cấp dưới của mình
+            </div>
+        </div>
+    </div>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <div><label><strong>Chọn đơn vị nhận</strong></label></div>
+                <div>
+                    @Html.DropDownList("IDPhongBan", null, "Chọn tên đơn vị", htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-md-6 text-center">
+                <div><label><strong>Chọn người nhận</strong></label></div>
+                <div>
+                    @Html.DropDownList("IDNhanVien", null, "Chọn tên nhân viên", htmlAttributes: new { @class = "form-control", @name = "idUser" })
+
+                </div>
+            </div>
+        </div>
+        <br />
+                
+        @*
+            Viết js form advanced nhận data từ dropdown
+        *@
+
+        <div class="form-group text-center" style="margin-top:15px">
+            <input type="submit" value="Gửi văn bản" class="btn btn-success" />
+        </div>
+
+    }
+
+</div>
