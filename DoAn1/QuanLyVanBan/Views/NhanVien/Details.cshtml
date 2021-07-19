@@ -1,0 +1,87 @@
+﻿@model Models.EF.NhanVien
+
+@{
+    ViewBag.Title = "Chi tiết nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-9">
+    <div class="row">
+        <div class="col-md-5">
+            <ul class="list-inline shop-top-menu pb-3 pt-1">
+                <li class="list-inline-item">
+                    <a class="h3 text-dark text-decoration-none mr-3" href="#">Chi tiết nhân viên</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card">
+        <dl class="dl-horizontal" style="margin-left: 20px;margin-top: 20px">
+            <dt>
+                <label class="pr-1  form-control-label"><strong>Họ tên</strong></label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+
+            <dt>
+                <label class="pr-1  form-control-label"><strong>Email</strong></label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                <label class="pr-1  form-control-label"><strong>Số điện thoại</strong></label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+
+            <dt>
+                <label class="pr-1  form-control-label"><strong>Địa chỉ</strong></label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+
+            <dt>
+                <label class="pr-1  form-control-label"><strong>Tên quyền</strong></label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhanQuyen.TenQuyen)
+            </dd>
+
+            <dt>
+                <label class="pr-1  form-control-label"><strong>Tên phòng ban</strong></label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhongBanKhoa.TenPhongBan)
+            </dd>
+
+            <dt>
+                <label class="pr-1  form-control-label"><strong>Giới tính</strong></label>
+            </dt>
+
+            <dd>
+                @if (Model.GioiTinh == true)
+                {
+                    <p>Nam</p>
+                }
+                else
+                { <p>Nữ</p>}
+            </dd>
+
+        </dl>
+        <p style="margin-left: 20px">
+            @Html.ActionLink("Trở về", "Index") |
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDNhanVien.Trim() })
+        </p>
+    </div>
+</div>

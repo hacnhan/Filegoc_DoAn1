@@ -11,6 +11,8 @@ namespace QuanLyVanBan.Controllers
 {
     public class LoginController : Controller
     {
+        public UserLogin userSession = new UserLogin();
+
         // GET: Login
         public ActionResult Index()
         {
@@ -24,11 +26,11 @@ namespace QuanLyVanBan.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new NhanVienDao();
-                if (model.UserMail==null)
+                if (model.UserMail == null)
                 {
                     ModelState.AddModelError("", "Vui lòng không bỏ trống Email!");
                 }
-                else if (model.UserPassword==null)
+                else if (model.UserPassword == null)
                 {
                     ModelState.AddModelError("", "Vui lòng không bỏ trống Mật khẩu!");
                 }
@@ -38,7 +40,6 @@ namespace QuanLyVanBan.Controllers
                     if (result == 1)
                     {
                         var user = dao.GetById(model.UserMail);
-                        var userSession = new UserLogin();
                         userSession.UserMail = user.Email;
                         userSession.UserID = user.IDNhanVien;
                         userSession.UserName = user.HoTen;
@@ -52,9 +53,9 @@ namespace QuanLyVanBan.Controllers
                         ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác!");
                     }
                 }
-                
-               
-                
+
+
+
             }
             return View("Index");
         }

@@ -140,6 +140,7 @@
     <Compile Include="Controllers\BasicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\VanBanDenController.cs" />
     <Compile Include="Controllers\VanBanDiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -400,6 +401,11 @@
     <Content Include="Views\VanBanDi\Index.cshtml" />
     <Content Include="Views\VanBanDi\Send.cshtml" />
     <Content Include="Views\VanBanDi\Resend.cshtml" />
+    <Content Include="Views\NhanVien\Create.cshtml" />
+    <Content Include="Views\NhanVien\Delete.cshtml" />
+    <Content Include="Views\NhanVien\Details.cshtml" />
+    <Content Include="Views\NhanVien\Edit.cshtml" />
+    <Content Include="Views\NhanVien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

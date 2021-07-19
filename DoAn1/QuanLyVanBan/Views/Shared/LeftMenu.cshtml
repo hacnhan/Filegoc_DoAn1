@@ -1,7 +1,7 @@
 ﻿
 
 <div class="col-lg-3">
-    <a class="collapsed d-flex h3 text-decoration-none" href=""><i class="fa fa-home"></i> Trang chủ</a>
+    <a class="collapsed d-flex h3 text-decoration-none" href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Trang chủ</a>
     <ul class="list-unstyled templatemo-accordion" id="hov">
         <li class="pb-3">
             <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
@@ -41,7 +41,17 @@
             <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
                 Thống kê
             </a>
-
         </li>
     </ul>
+    @{
+        var session = (QuanLyVanBan.Common.UserLogin)Session[QuanLyVanBan.Common.CommonConstant.USER_SESSION];
+    }
+    @if (session.AuthorID == "PQ03      " || session.AuthorID == "PQ02      " || session.AuthorID == "PQ01      ")
+    {
+
+        <a class="" href="/NhanVien/Index">
+            Quản lý nhân viên
+        </a>
+
+    }
 </div>

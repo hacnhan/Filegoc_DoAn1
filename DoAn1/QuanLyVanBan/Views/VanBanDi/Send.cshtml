@@ -85,19 +85,19 @@
         <div class="row" style="margin-top:5px">
             <div class="col-md-4">
                 <div><label>Ngày ban hành <font color="red">*</font></label></div>
-                @Html.EditorFor(model => model.NgayBanHanh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NgayBanHanh, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.NgayBanHanh, "", new { @class = "text-danger" })
             </div>
 
             <div class="col-md-4">
                 <div><label>Ngày có hiệu lực <font color="red">*</font></label></div>
-                @Html.EditorFor(model => model.NgayHieuLuc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NgayHieuLuc, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.NgayHieuLuc, "", new { @class = "text-danger" })
             </div>
 
             <div class="col-md-4">
                 <div><label>Hạn xử lý</label></div>
-                @Html.EditorFor(model => model.HanXuLy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.HanXuLy, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.HanXuLy, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -105,7 +105,7 @@
         <div class="row" style="margin-top:5px">
             <div class="col-md-12">
                 <div><label>Nội dung chính</label></div>
-                @Html.TextAreaFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control", @style = "width: 500px" } })
+                @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
             </div>
         </div>

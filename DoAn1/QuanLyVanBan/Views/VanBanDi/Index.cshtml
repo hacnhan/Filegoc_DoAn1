@@ -129,7 +129,7 @@
                     </tbody>
                 </table>
 
-                <div>
+                <div style="margin-left:20px">
                     Trang: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
                 </div>

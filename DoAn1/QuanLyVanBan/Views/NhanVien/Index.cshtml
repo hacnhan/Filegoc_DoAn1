@@ -1,0 +1,124 @@
+﻿@model PagedList.IPagedList<Models.EF.NhanVien>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-9">
+    @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-md-5">
+                <ul class="list-inline shop-top-menu pb-3 pt-1">
+                    <li class="list-inline-item">
+                        <a class="h3 text-dark text-decoration-none mr-3" href="#">Quản lý nhân viên</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <hr />
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Tìm kiếm</strong> nhân viên
+            </div>
+
+            <div class="row">
+                <form action="#" method="post" class="form-inline">
+                    <div class="col-md-4 pb-4" style="margin-left:30px">
+                        <div class="form-group">
+                            <label for="" class="pr-1  form-control-label">Tên nhân viên</label>
+
+                            <input type="text" value="@ViewBag.SearchString1" class="form-control" name="searchString1" placeholder="Nhập tên nhân viên" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 pb-4">
+                        <div class="form-group">
+                            <label for="" class="px-1  form-control-label">Phòng ban - khoa</label>
+
+                            <input type="text" value="@ViewBag.SearchString2" class="form-control" name="searchString2" placeholder="Nhập tên phòng - khoa" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-search"></i> Tìm kiếm
+                </button>
+
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-times-circle"></i> Huỷ
+                </button>
+                           </div>
+        </div>
+        <br />
+        <div class="card">
+            <div class="row">
+                <div class="col-md-3" style="margin-top: 10px; margin-left: 10px">
+                    <a href="/NhanVien/Create" class="btn btn-outline-success">Thêm nhân viên</a>
+
+                </div>
+            </div>
+            <br />
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>Tên</th>
+                            <th>Phòng ban</th>
+                            <th>Quyền</th>
+                            <th>Email</th>
+                            <th>Giới tính</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+
+                            <tr id="hang_@item.IDNhanVien">
+
+                                <td>@item.HoTen</td>
+                                <td>@item.PhongBanKhoa.TenPhongBan</td>
+                                <td>@item.PhanQuyen.TenQuyen</td>
+                                <td>@item.Email</td>
+                                <td>
+                                    @if (item.GioiTinh == true)
+                                    {
+                                        <p>Nam</p>
+
+                                    }
+                                    else
+                                    { <p>Nữ</p>}
+                                </td>
+                                <td>
+                                    <a href="/NhanVien/Details/@item.IDNhanVien" style="color:forestgreen">Xem chi tiết</a>
+                                    |
+                                    <a href="/NhanVien/Edit/@item.IDNhanVien">Chỉnh sửa</a>
+                                    |
+                                    @Ajax.ActionLink("Xoá", "DeleteRow", new { @id = item.IDNhanVien}, new AjaxOptions
+                               {
+                                   Confirm = "Bạn có muốn xoá nhân viên này?",
+                                   OnComplete = "$('#hang_" + @item.IDNhanVien + "').remove()",
+                                   HttpMethod = "Delete"
+                               }, new { @style ="color:red" }
+                               )
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div style="margin-left:20px">
+                    Trang: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+    }
+</div>

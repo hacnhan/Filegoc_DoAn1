@@ -16,14 +16,14 @@ namespace QuanLyVanBan.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Về chúng tôi";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Liên hệ";
 
             return View();
         }
