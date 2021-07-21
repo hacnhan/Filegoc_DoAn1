@@ -64,9 +64,9 @@ namespace Models.DAO
         }
 
         //Chuyen doi
-        public void ChuyenTiepVanBanDen(VanBanDen vanBanChuyenTiep, string idNguoiNhan)
+        public VanBanDen ChuyenTiepVanBanDen(VanBanDen vanBanChuyenTiep, string idNguoiNhan)
         {
-            var vanBanDen = new VanBanDen();
+            VanBanDen vanBanDen = new VanBanDen();
             vanBanDen.IDVanBanDen = (db.VanBanDens.Count() + 1).ToString();
             vanBanDen.IDLVB = vanBanChuyenTiep.IDLVB;
             vanBanDen.IDDoKhan = vanBanChuyenTiep.IDDoKhan;
@@ -84,6 +84,7 @@ namespace Models.DAO
             vanBanDen.TinhTrang = vanBanChuyenTiep.TinhTrang;
             db.VanBanDens.Add(vanBanDen);
             db.SaveChanges();
+            return vanBanDen;
         }
     }
 }
