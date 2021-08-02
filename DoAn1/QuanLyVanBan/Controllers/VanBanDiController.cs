@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using QuanLyVanBan.Common;
 using System.Net;
+using System.IO;
 
 namespace QuanLyVanBan.Controllers
 {
@@ -38,6 +39,7 @@ namespace QuanLyVanBan.Controllers
         }
 
         //Gửi
+      
         public ActionResult Send()
         {
             ViewBag.IDFileDinhKem = new SelectList(db.FileDinhKems, "IDFileDinhKem", "TenFile");
@@ -48,18 +50,32 @@ namespace QuanLyVanBan.Controllers
 
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Send([Bind(Include = "IDVanBanDi,IDLVB,IDDoKhan,IDNhanVien,IDFileDinhKem,KyHieuVanBanDi,NgayBanHanh,NgayGui,NgayHieuLuc,NoiNhan,NoiDung,TieuDe,NguoiKyTen,HanXuLy,TinhTrang")] VanBanDi vanBanDi)
+        public ActionResult Send([Bind(Include = "IDVanBanDi,IDLVB,IDDoKhan,IDNhanVien,IDFileDinhKem,KyHieuVanBanDi,NgayBanHanh,NgayGui,NgayHieuLuc,NoiNhan,NoiDung,TieuDe,NguoiKyTen,HanXuLy,TinhTrang")] VanBanDi vanBanDi, HttpPostedFileBase file)
         {
             var dao = new VanBanDenDao();
+            var daoFile = new FileDinhKemDao();
+            //file
+            string path = Server.MapPath("~/File");
+            string tenFile = Path.GetFileName(file.FileName);
+
+            string pathFull = Path.Combine(path, tenFile);
+            file.SaveAs(pathFull);
+
+            var idFileDK = daoFile.LuuFile(file.FileName);
+
+
             var session = (QuanLyVanBan.Common.UserLogin)Session[QuanLyVanBan.Common.CommonConstant.USER_SESSION];
             if (ModelState.IsValid)
             {
                 vanBanDi.NgayGui = DateTime.Now;
-                dao.ThemVanBanDen(vanBanDi);
-                vanBanDi.IDVanBanDi = (db.VanBanDis.Count() + 1).ToString();
+                               vanBanDi.IDVanBanDi = (db.VanBanDis.Count() + 1).ToString();
                 vanBanDi.IDNguoiGui = session.UserID;
+                vanBanDi.IDFileDinhKem = idFileDK;
+
+                dao.ThemVanBanDen(vanBanDi);
                 db.VanBanDis.Add(vanBanDi);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -84,7 +100,7 @@ namespace QuanLyVanBan.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Resend([Bind(Include = "IDVanBanDi,IDLVB,IDDoKhan,IDNhanVien,IDFileDinhKem,KyHieuVanBanDi,NgayBanHanh,NgayGui,NgayHieuLuc,NoiNhan,NoiDung,TieuDe,NguoiKyTen,HanXuLy,TinhTrang")] VanBanDi vanBanDi, string id, string idUser)
         {
-            
+
             if (ModelState.IsValid)
             {
                 VanBanDen vanBanDen = db.VanBanDens.Find(id);
