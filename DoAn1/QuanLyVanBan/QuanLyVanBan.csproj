@@ -141,6 +141,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\NhomPhatTrienController.cs" />
     <Compile Include="Controllers\VanBanDenController.cs" />
     <Compile Include="Controllers\VanBanDiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,6 +216,10 @@
     <Content Include="Assets\img\img2.png" />
     <Content Include="Assets\img\img3.png" />
     <Content Include="Assets\img\img4.png" />
+    <Content Include="Assets\img\lap.jpg" />
+    <Content Include="Assets\img\long.png" />
+    <Content Include="Assets\img\nhanadmin.jpg" />
+    <Content Include="Assets\img\thanh.png" />
     <Content Include="Assets\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\jquery-1.11.0.min.js" />
@@ -406,6 +411,8 @@
     <Content Include="Views\NhanVien\Details.cshtml" />
     <Content Include="Views\NhanVien\Edit.cshtml" />
     <Content Include="Views\NhanVien\Index.cshtml" />
+    <Content Include="Views\VanBanDi\Details.cshtml" />
+    <Content Include="Views\NhomPhatTrien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

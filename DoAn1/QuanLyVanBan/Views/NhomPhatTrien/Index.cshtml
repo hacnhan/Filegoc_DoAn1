@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col-lg-9">
+    <div class="row">
+        <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="w-100 pt-1 mb-5 text-right">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Tìm kiếm ...">
+                        <button type="submit" class="input-group-text bg-success text-light">
+                            <i class="fa fa-fw fa-search text-white"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <section class="bg-success py-5">
+            <div class="container">
+                <div class="row align-items-center py-5">
+                    <div class="col-md-8 text-white">
+                        <h1>Về chúng tôi</h1>
+                        <p>
+                            Là nhóm gồm 4 thành viên với mong muốn kế thừa, phát triển hệ thống <strong>"Quản lý và ban hành văn bản cho các cơ quan hành chính sự nghiệp"</strong>
+                            đưa đến người dùng sự thuận tiện trong công tác quản lý văn bản hành chính. Song, hệ thống vẫn còn nhiều bất cập, rất mong nhận được sự
+                            đóng góp ý kiến và ủng hộ từ phía người dùng để hệ thống được phát triển hoàn thiện hơn. Chúng tôi xin chân thành cảm ơn!
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="~/Assets/img/about-hero.svg" alt="About Hero">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Close Banner -->
+        <br />
+        <!-- Start Brands -->
+        <section class="bg-light py-5">
+            <div class="container my-4">
+                <div class="row text-center py-3">
+                    <div class="col-lg-6 m-auto">
+                        <h1 class="h1">Thành viên nhóm</h1>
+                        <p>
+                            Đến từ K18 ngành CNTT Đại học Sư phạm Kỹ thuật <br /> Đà Nẵng
+                        </p>
+                    </div>
+                    <div class="col-lg-9 m-auto tempaltemo-carousel">
+                        <div class="row d-flex flex-row">
+                            <!--Controls-->
+                            <div class="col-1 align-self-center">
+                                <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="prev">
+                                    <i class="text-light fas fa-chevron-left"></i>
+                                </a>
+                            </div>
+                            <!--End Controls-->
+                            <!--Carousel Wrapper-->
+                            <div class="col">
+                                <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="templatemo-slide-brand" data-bs-ride="carousel">
+                                    <!--Slides-->
+                                    <div class="carousel-inner product-links-wap" role="listbox">
+
+                                        <!--First slide-->
+                                        <div class="carousel-item active">
+                                            <div class="row">
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/nguyen.nhan2110"><img class="img-fluid brand-img" src="~/Assets/img/nhanadmin.jpg" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/knvolap"><img class="img-fluid brand-img" src="~/Assets/img/lap.jpg" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/pham.long.9849912"><img class="img-fluid brand-img" src="~/Assets/img/long.png" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/profile.php?id=100008225825150"><img class="img-fluid brand-img" src="~/Assets/img/thanh.png" alt="Brand Logo"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--End First slide-->
+                                        <!--Second slide-->
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/profile.php?id=100008225825150"><img class="img-fluid brand-img" src="~/Assets/img/thanh.png" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/nguyen.nhan2110"><img class="img-fluid brand-img" src="~/Assets/img/nhanadmin.jpg" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/knvolap"><img class="img-fluid brand-img" src="~/Assets/img/lap.jpg" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/pham.long.9849912"><img class="img-fluid brand-img" src="~/Assets/img/long.png" alt="Brand Logo"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--End Second slide-->
+                                        <!--Third slide-->
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/pham.long.9849912"><img class="img-fluid brand-img" src="~/Assets/img/long.png" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/profile.php?id=100008225825150"><img class="img-fluid brand-img" src="~/Assets/img/thanh.png" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/nguyen.nhan2110"><img class="img-fluid brand-img" src="~/Assets/img/nhanadmin.jpg" alt="Brand Logo"></a>
+                                                </div>
+                                                <div class="col-3 p-md-5">
+                                                    <a href="https://www.facebook.com/knvolap"><img class="img-fluid brand-img" src="~/Assets/img/lap.jpg" alt="Brand Logo"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--End Third slide-->
+
+                                    </div>
+                                    <!--End Slides-->
+                                </div>
+                            </div>
+                            <!--End Carousel Wrapper-->
+                            <!--Controls-->
+                            <div class="col-1 align-self-center">
+                                <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="next">
+                                    <i class="text-light fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                            <!--End Controls-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Brands-->
+    </div>
+</div>

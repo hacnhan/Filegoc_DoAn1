@@ -46,7 +46,7 @@
     @{
         var session = (QuanLyVanBan.Common.UserLogin)Session[QuanLyVanBan.Common.CommonConstant.USER_SESSION];
     }
-    @if (session.AuthorID == "PQ03      " || session.AuthorID == "PQ02      " || session.AuthorID == "PQ01      ")
+    @if (session.AuthorID.Contains("PQ03") || session.AuthorID.Contains("PQ02") || session.AuthorID.Contains("PQ01"))
     {
 
         <a class="h3" href="/NhanVien/Index" style="color: black">

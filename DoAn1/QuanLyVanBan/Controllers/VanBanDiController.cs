@@ -39,9 +39,11 @@ namespace QuanLyVanBan.Controllers
         }
 
         //Gửi
-      
+
         public ActionResult Send()
         {
+            var session = (QuanLyVanBan.Common.UserLogin)Session[QuanLyVanBan.Common.CommonConstant.USER_SESSION];
+
             ViewBag.IDFileDinhKem = new SelectList(db.FileDinhKems, "IDFileDinhKem", "TenFile");
             ViewBag.IDLVB = new SelectList(db.LoaiVanBans, "IDLVB", "TenLVB");
             ViewBag.IDDoKhan = new SelectList(db.MucDoKhans, "IDDoKhan", "TenMucDoKhan");
@@ -57,6 +59,7 @@ namespace QuanLyVanBan.Controllers
         {
             var dao = new VanBanDenDao();
             var daoFile = new FileDinhKemDao();
+         
             //file
             string path = Server.MapPath("~/File");
             string tenFile = Path.GetFileName(file.FileName);
@@ -71,7 +74,7 @@ namespace QuanLyVanBan.Controllers
             if (ModelState.IsValid)
             {
                 vanBanDi.NgayGui = DateTime.Now;
-                               vanBanDi.IDVanBanDi = (db.VanBanDis.Count() + 1).ToString();
+                vanBanDi.IDVanBanDi = (db.VanBanDis.Count() + 1).ToString();
                 vanBanDi.IDNguoiGui = session.UserID;
                 vanBanDi.IDFileDinhKem = idFileDK;
 
@@ -112,6 +115,21 @@ namespace QuanLyVanBan.Controllers
             ViewBag.IDPhongBan = new SelectList(db.PhongBanKhoas, "IDPhongBan", "TenPhongBan");
 
             return View("Index");
+        }
+
+        //Chi tiết
+        public ActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            VanBanDi vanBanDi = db.VanBanDis.Find(id);
+            if (vanBanDi == null)
+            {
+                return HttpNotFound();
+            }
+            return View(vanBanDi);
         }
 
         //Đăng xuất
