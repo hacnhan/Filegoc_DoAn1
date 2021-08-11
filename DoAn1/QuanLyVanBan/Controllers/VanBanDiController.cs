@@ -47,7 +47,16 @@ namespace QuanLyVanBan.Controllers
             ViewBag.IDFileDinhKem = new SelectList(db.FileDinhKems, "IDFileDinhKem", "TenFile");
             ViewBag.IDLVB = new SelectList(db.LoaiVanBans, "IDLVB", "TenLVB");
             ViewBag.IDDoKhan = new SelectList(db.MucDoKhans, "IDDoKhan", "TenMucDoKhan");
-            ViewBag.IDNhanVien = new SelectList(db.NhanViens, "IDNhanVien", "HoTen");
+
+            if (session.AuthorID.Contains("PQ01") || session.AuthorID.Contains("PQ02") || session.AuthorID.Contains("PQ03"))
+            {
+                ViewBag.IDNhanVien = new SelectList(db.NhanViens.Where(x => x.IDPhanQuyen != session.AuthorID), "IDNhanVien", "HoTen");
+            }
+            else
+            {
+                ViewBag.IDNhanVien = new SelectList(db.NhanViens.Where(x => x.IDPhanQuyen != "PQ01      ").Where(x => x.IDPhanQuyen != "PQ02      ").Where(x => x.IDPhanQuyen != "PQ03      "), "IDNhanVien", "HoTen");
+            }
+            //ViewBag.IDNhanVien = new SelectList(db.NhanViens.Where(x => x.IDPhanQuyen != session.AuthorID), "IDNhanVien", "HoTen");
             ViewBag.IDPhongBan = new SelectList(db.PhongBanKhoas, "IDPhongBan", "TenPhongBan");
 
             return View();
@@ -59,7 +68,7 @@ namespace QuanLyVanBan.Controllers
         {
             var dao = new VanBanDenDao();
             var daoFile = new FileDinhKemDao();
-         
+                       
             //file
             string path = Server.MapPath("~/File");
             string tenFile = Path.GetFileName(file.FileName);
@@ -68,9 +77,9 @@ namespace QuanLyVanBan.Controllers
             file.SaveAs(pathFull);
 
             var idFileDK = daoFile.LuuFile(file.FileName);
-
-
+            
             var session = (QuanLyVanBan.Common.UserLogin)Session[QuanLyVanBan.Common.CommonConstant.USER_SESSION];
+
             if (ModelState.IsValid)
             {
                 vanBanDi.NgayGui = DateTime.Now;
@@ -88,6 +97,7 @@ namespace QuanLyVanBan.Controllers
             ViewBag.IDLVB = new SelectList(db.LoaiVanBans, "IDLVB", "TenLVB", vanBanDi.IDLVB);
             ViewBag.IDDoKhan = new SelectList(db.MucDoKhans, "IDDoKhan", "TenMucDoKhan", vanBanDi.IDDoKhan);
             ViewBag.IDNhanVien = new SelectList(db.NhanViens, "IDNhanVien", "IDPhongBan", vanBanDi.IDNhanVien);
+          
             return View(vanBanDi);
         }
 
@@ -95,7 +105,16 @@ namespace QuanLyVanBan.Controllers
         //Chuyển tiếp
         public ActionResult Resend()
         {
-            ViewBag.IDNhanVien = new SelectList(db.NhanViens, "IDNhanVien", "HoTen");
+            var session = (QuanLyVanBan.Common.UserLogin)Session[QuanLyVanBan.Common.CommonConstant.USER_SESSION];
+            if (session.AuthorID.Contains("PQ01") || session.AuthorID.Contains("PQ02") || session.AuthorID.Contains("PQ03"))
+            {
+                ViewBag.IDNhanVien = new SelectList(db.NhanViens.Where(x => x.IDPhanQuyen != session.AuthorID), "IDNhanVien", "HoTen");
+            }
+            else
+            {
+                ViewBag.IDNhanVien = new SelectList(db.NhanViens.Where(x => x.IDPhanQuyen != "PQ01      ").Where(x => x.IDPhanQuyen != "PQ02      ").Where(x => x.IDPhanQuyen != "PQ03      "), "IDNhanVien", "HoTen");
+            }
+            //ViewBag.IDNhanVien = new SelectList(db.NhanViens, "IDNhanVien", "HoTen");
             ViewBag.IDPhongBan = new SelectList(db.PhongBanKhoas, "IDPhongBan", "TenPhongBan");
             return View();
         }

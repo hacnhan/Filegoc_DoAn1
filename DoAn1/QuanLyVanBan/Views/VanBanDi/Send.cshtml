@@ -29,6 +29,7 @@
     </div>
     <br />
 
+   
     @using (Html.BeginForm("Send", "VanBanDi", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
@@ -44,7 +45,7 @@
                 <div><label><strong>Chọn người nhận</strong></label></div>
                 <div>
                     @Html.DropDownList("IDNhanVien", null, "Chọn tên nhân viên", htmlAttributes: new { @class = "form-control" })
-                    
+
                 </div>
             </div>
         </div>

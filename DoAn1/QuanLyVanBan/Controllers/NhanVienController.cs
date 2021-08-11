@@ -107,6 +107,9 @@ namespace QuanLyVanBan.Controllers
         {
             if (ModelState.IsValid)
             {
+                var encryptedMd5Pas = Encryptor.MD5Hash(nhanVien.MatKhau);
+                nhanVien.MatKhau = encryptedMd5Pas;
+
                 db.Entry(nhanVien).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
